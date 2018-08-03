@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+
 import { AppComponent } from './app.component';
 import { FotosModule } from './fotos/fotos.module';
-import { HttpClient } from 'selenium-webdriver/http';
-
-
+import { FotoListComponent } from './fotos/foto-list/foto-list.component';
+import { AppRoutingModule } from './app.routing.module';
+import { ErrorsModule } from './errors/errors.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FotosModule,
-    HttpClientModule
+    AppRoutingModule,
+    ErrorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
