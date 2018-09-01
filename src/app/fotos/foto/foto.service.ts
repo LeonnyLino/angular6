@@ -1,6 +1,6 @@
+import { Foto } from './../foto';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Foto } from '../foto';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 const API = 'http://localhost:3000'
 @Injectable({
@@ -10,7 +10,13 @@ export class FotoService {
 
   constructor(private http: HttpClient) { }
 
-  listFormUser(userName: string){
+  listFromUser(userName: string){
     return this.http.get<Foto[]>(API + '/' + userName + '/photos');
+  }
+
+  listFromUserPaginated(userName: string, page: number){
+    const params = new HttpParams().append('page', page.toString());
+
+    return this.http.get<Foto[]>(API + '/' + userName + '/photos', {params});
   }
 }
